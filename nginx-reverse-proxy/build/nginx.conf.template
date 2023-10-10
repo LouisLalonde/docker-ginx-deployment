@@ -1,0 +1,19 @@
+worker_processes auto;
+
+events {
+  worker_connections 1024;
+}
+
+http {
+  server {
+    listen 443 ssl;
+    server_name localhost;
+
+    ssl_certificate /etc/nginx/certs/{{SSL_CERT}};
+    ssl_certificate_key /etc/nginx/certs/{{SSL_KEY}};
+
+    location / {
+      proxy_pass http://{{APP_HOST}}:{{APP_PORT}};
+    }
+  }
+}
