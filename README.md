@@ -1,4 +1,4 @@
-# Docker-ginx-deployment
+# Docker-nginx-deployment
 
 ### Overview
 
