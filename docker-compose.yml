@@ -1,15 +1,20 @@
 version: "3.3"
 
 services:
-  peca-hub-reverse-proxy:
+  nginx-reverse-proxy:
     restart: always
     image: <IMAGE_NAME>
     ports:
       - "6443:443"
     volumes:
-      - ./certs:/etc/nginx/certs
+      - ./nginx-reverse-proxy/certs:/etc/nginx/certs
     # For development purposes
     extra_hosts:
       - "host.docker.internal:host-gateway"
     env_file:
-      - .env
+      - ./nginx-reverse-proxy/.env
+  node-app:
+    restart: always
+    image: <IMAGE_NAME>
+    ports:
+      - "6800:80"
