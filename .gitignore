@@ -1,6 +1,5 @@
 # SSL
 *.crt
-*.pem
 *.key
 
 *.conf
